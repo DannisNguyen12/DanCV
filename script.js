@@ -143,26 +143,90 @@ document.addEventListener('DOMContentLoaded', function() {
     // Auto-rotate quotes every 5 seconds
     setInterval(nextQuote, 5000);
     
-    // Header scroll effect
-    const header = document.querySelector('header');
-    let lastScrollTop = 0;
+    // Testimonials animation on scroll
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    testimonialCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+    });
+    
+    // Project detail modal functionality
+    const viewProjectBtns = document.querySelectorAll('.view-project-btn');
+    
+    viewProjectBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const project = this.getAttribute('data-project');
+            // You can add modal functionality here to show more project details
+            console.log('Viewing project:', project);
+            // For now, just scroll to the project section
+            const projectSection = document.getElementById('projects');
+            if (projectSection) {
+                projectSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Smooth scrolling for contact links
+    const contactLinks = document.querySelectorAll('.contact-details a[href^="#"]');
+    contactLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add enhanced scroll animations for new sections
+    const newAnimatedElements = document.querySelectorAll('.skill-category, .project-item, .contact-item, .testimonial-slide');
+    newAnimatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+    
+    // Add typing effect for skills tags (optional enhancement)
+    const skillTags = document.querySelectorAll('.skill-tag');
+    skillTags.forEach((tag, index) => {
+        tag.style.opacity = '0';
+        tag.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+            tag.style.opacity = '1';
+            tag.style.transform = 'scale(1)';
+            tag.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        }, index * 100);
+    });
+    
+    // Enhanced header behavior for longer content
+    const sections = document.querySelectorAll('section[id]');
     
     window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let current = '';
         
-        if (scrollTop > 100) {
-            header.style.background = body.classList.contains('dark-theme') 
-                ? 'rgba(26, 26, 26, 0.98)' 
-                : 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-        } else {
-            header.style.background = body.classList.contains('dark-theme') 
-                ? 'rgba(26, 26, 26, 0.95)' 
-                : 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = 'none';
-        }
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
         
-        lastScrollTop = scrollTop;
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('active');
+            }
+        });
     });
     
     // Add scroll animations
