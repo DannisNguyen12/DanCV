@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trey Ratcliff | Photography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Trey Ratcliff</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#techniques">Techniques</a>
+                    <a href="#achievements">Achievements</a>
+                    <a href="#quotes">Quotes</a>
+                </div>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1>Trey Ratcliff</h1>
+            <p>Pioneer of HDR Photography</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Trey Ratcliff</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/trey_portrait.jpg" alt="Trey Ratcliff Portrait">
+                </div>
+                <div class="about-text">
+                    <p>Trey Ratcliff was born on July 7, 1971, in Austin, Texas. Despite being born blind in one eye, he developed a unique vision that would define his extraordinary career in photography. After studying Computer Science at Southern Methodist University, he combined his technical foundation with artistic sensibilities to pioneer innovative approaches to digital photography.</p>
+                    <p>In 2005, he founded his photography blog "Stuck in Customs," which quickly gained popularity and established him as a leading voice in travel and HDR photography. His photograph "Fourth at Lake Austin" became the first HDR photograph ever to be displayed at the prestigious Smithsonian Museum in Washington D.C.</p>
+                    <p>In 2012, Ratcliff relocated to Queenstown, New Zealand, where he currently resides. His photographs have been viewed more than 150 billion times via Google-based channels, and he has amassed over 16 million followers across his social media accounts, making him one of the most viewed photographers in the digital age.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Photography Portfolio</h2>
+                <p>Explore some of Trey Ratcliff's most iconic works</p>
+            </div>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="landscape">Landscapes</button>
+                <button class="filter-btn" data-filter="architecture">Architecture</button>
+                <button class="filter-btn" data-filter="travel">Travel</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item landscape">
+                    <img src="images/sunset_landscape.jpg" alt="HDR Sunset Landscape">
+                    <div class="portfolio-overlay">
+                        <h3>HDR Sunset Landscape</h3>
+                        <p>A stunning example of Ratcliff's HDR technique showcasing dramatic lighting</p>
+                        <button class="view-btn" data-img="images/sunset_landscape.jpg">View Larger</button>
+                    </div>
+                </div>
+                <div class="portfolio-item landscape">
+                    <img src="images/mountain_scene.jpg" alt="Mountain Scene">
+                    <div class="portfolio-overlay">
+                        <h3>Mountain Scene</h3>
+                        <p>Dramatic mountain landscape with Ratcliff's signature vibrant color palette</p>
+                        <button class="view-btn" data-img="images/mountain_scene.jpg">View Larger</button>
+                    </div>
+                </div>
+                <div class="portfolio-item landscape">
+                    <img src="images/end_of_world.jpg" alt="I've Reached the End of the World">
+                    <div class="portfolio-overlay">
+                        <h3>I've Reached the End of the World</h3>
+                        <p>A lone figure standing at the edge of a cliff overlooking a vast mountain valley</p>
+                        <button class="view-btn" data-img="images/end_of_world.jpg">View Larger</button>
+                    </div>
+                </div>
+                <div class="portfolio-item landscape">
+                    <img src="images/milford_sound.jpg" alt="Milford Sound, New Zealand">
+                    <div class="portfolio-overlay">
+                        <h3>Milford Sound, New Zealand</h3>
+                        <p>Breathtaking view of one of New Zealand's most iconic landscapes</p>
+                        <button class="view-btn" data-img="images/milford_sound.jpg">View Larger</button>
+                    </div>
+                </div>
+                <div class="portfolio-item travel architecture">
+                    <img src="images/bamboo_forest.jpg" alt="Bamboo Forest">
+                    <div class="portfolio-overlay">
+                        <h3>The Bamboo Forest</h3>
+                        <p>Ethereal capture of a bamboo forest with stunning light and depth</p>
+                        <button class="view-btn" data-img="images/bamboo_forest.jpg">View Larger</button>
+                    </div>
+                </div>
+                <div class="portfolio-item architecture travel">
+                    <img src="images/petra.jpg" alt="Petra, Jordan">
+                    <div class="portfolio-overlay">
+                        <h3>An Ancient Tapestry</h3>
+                        <p>The iconic treasury at Petra, Jordan, captured with dramatic lighting</p>
+                        <button class="view-btn" data-img="images/petra.jpg">View Larger</button>
+                    </div>
+                </div>
+                <div class="portfolio-item architecture travel">
+                    <img src="images/cinque_terre.jpg" alt="Cinque Terre, Italy">
+                    <div class="portfolio-overlay">
+                        <h3>Cinque Terre as Evening Falls</h3>
+                        <p>The colorful coastal villages of Cinque Terre, Italy at sunset</p>
+                        <button class="view-btn" data-img="images/cinque_terre.jpg">View Larger</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="techniques" class="techniques">
+        <div class="container">
+            <div class="section-title">
+                <h2>HDR Photography Techniques</h2>
+                <p>Trey Ratcliff is widely regarded as a pioneer and master of High Dynamic Range (HDR) photography</p>
+            </div>
+            <div class="techniques-content">
+                <div class="technique">
+                    <div class="technique-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Multiple Exposure Capture</h3>
+                    <p>Capturing 3-7 bracketed shots at different exposure values to capture both the darkest shadows and the brightest highlights in a scene.</p>
+                </div>
+                <div class="technique">
+                    <div class="technique-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Tone Mapping</h3>
+                    <p>Using sophisticated tone mapping techniques to combine multiple exposures into a single image that preserves detail across the entire dynamic range.</p>
+                </div>
+                <div class="technique">
+                    <div class="technique-icon">
+                        <i class="fas fa-fill-drip"></i>
+                    </div>
+                    <h3>Vibrant Color Palette</h3>
+                    <p>Creating images with vibrant, saturated colors that evoke emotional responses rather than pursuing strict realism.</p>
+                </div>
+                <div class="technique">
+                    <div class="technique-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Digital Processing Workflow</h3>
+                    <p>A detailed workflow combining Adobe Lightroom for initial adjustments with specialized HDR software for tone mapping and final adjustments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Career Highlights & Achievements</h2>
+            </div>
+            <div class="achievements-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2005</h3>
+                        <h4>Founded Stuck in Customs Blog</h4>
+                        <p>Launched his photography blog which would become the world's premier travel photography blog.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2006</h3>
+                        <h4>First HDR Photo at the Smithsonian</h4>
+                        <p>"Fourth at Lake Austin" becomes the first HDR photograph displayed at the Smithsonian Museum.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2012</h3>
+                        <h4>Relocated to New Zealand</h4>
+                        <p>Made a significant life change by moving to Queenstown, New Zealand.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2015</h3>
+                        <h4>Aurora HDR Software Development</h4>
+                        <p>Collaborated with Skylum (formerly Macphun) to create Aurora HDR, a powerful HDR editing tool.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2018</h3>
+                        <h4>Smithsonian Renwick Gallery Exhibition</h4>
+                        <p>Photography featured at the Smithsonian's Renwick Gallery in "No Spectators: The Art of Burning Man."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quotes" class="quotes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quotes & Insights</h2>
+                <p>Trey Ratcliff's thoughts on photography and creativity</p>
+            </div>
+            <div class="quotes-carousel">
+                <div class="quote-slide active">
+                    <blockquote>
+                        "I think a lot of people see the world in HDR, and they may not even know it."
+                    </blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>
+                        "Photography is about capturing a moment and telling a story, and HDR allows me to do that in a way that feels true to my own experience."
+                    </blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>
+                        "I try to make the real world look like it really does to me: a fantasy."
+                    </blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>
+                        "Don't be afraid to experiment and break the rules. That's where the magic happens."
+                    </blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>
+                        "I think people get a little obsessed with what camera is the best or what lens is the best... The magic is in your creativity."
+                    </blockquote>
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-quote"><i class="fas fa-angle-left"></i></button>
+                    <div class="quote-dots">
+                        <span class="quote-dot active" data-index="0"></span>
+                        <span class="quote-dot" data-index="1"></span>
+                        <span class="quote-dot" data-index="2"></span>
+                        <span class="quote-dot" data-index="3"></span>
+                        <span class="quote-dot" data-index="4"></span>
+                    </div>
+                    <button class="next-quote"><i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content">
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Trey Ratcliff</h3>
+                    <p>Pioneer of HDR Photography</p>
+                    <p>All photographs © Trey Ratcliff and www.StuckInCustoms.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 | This website is a tribute to Trey Ratcliff's work and career.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
