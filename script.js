@@ -291,8 +291,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Uncomment the lines below if you want typing animation
-    // setTimeout(() => typeWriter(heroTitle, 'Trey Ratcliff', 150), 500);
-    // setTimeout(() => typeWriter(heroSubtitle, 'Pioneer of HDR Photography', 100), 2000);
+    setTimeout(() => typeWriter(heroTitle, 'Trey Ratcliff', 150), 500);
+    setTimeout(() => typeWriter(heroSubtitle, 'Pioneer of HDR Photography', 100), 2000);
+    
+    // Simple Tech Pills Interactions
+    const techPills = document.querySelectorAll('.tech-pill');
+    
+    // Add simple click effects for tech pills
+    techPills.forEach((pill, index) => {
+        // Simple entrance animation
+        pill.style.opacity = '0';
+        pill.style.transform = 'translateY(10px)';
+        pill.style.transition = 'all 0.3s ease';
+        
+        setTimeout(() => {
+            pill.style.opacity = '1';
+            pill.style.transform = 'translateY(0)';
+        }, index * 30);
+        
+        // Simple click effect
+        pill.addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        });
+        
+        // Keyboard accessibility
+        pill.setAttribute('tabindex', '0');
+        pill.setAttribute('role', 'button');
+        pill.setAttribute('aria-label', `Technology: ${pill.textContent}`);
+        
+        pill.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
 });
 
 // Keyboard navigation for accessibility

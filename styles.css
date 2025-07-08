@@ -774,6 +774,60 @@ body.dark-theme .skill-category:hover {
     box-shadow: 0 12px 32px rgba(79, 172, 254, 0.4);
 }
 
+.skill-category:nth-child(4) .skill-icon {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    box-shadow: 0 8px 24px rgba(23, 162, 184, 0.3);
+}
+
+.skill-category:nth-child(4):hover .skill-icon {
+    box-shadow: 0 12px 32px rgba(23, 162, 184, 0.4);
+}
+
+.skill-category:nth-child(5) .skill-icon {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    box-shadow: 0 8px 24px rgba(40, 167, 69, 0.3);
+}
+
+.skill-category:nth-child(5):hover .skill-icon {
+    box-shadow: 0 12px 32px rgba(40, 167, 69, 0.4);
+}
+
+.skill-category:nth-child(6) .skill-icon {
+    background: linear-gradient(135deg, #fd7e14 0%, #ff6b35 100%);
+    box-shadow: 0 8px 24px rgba(253, 126, 20, 0.3);
+}
+
+.skill-category:nth-child(6):hover .skill-icon {
+    box-shadow: 0 12px 32px rgba(253, 126, 20, 0.4);
+}
+
+.skill-category:nth-child(7) .skill-icon {
+    background: linear-gradient(135deg, #6610f2 0%, #6f42c1 100%);
+    box-shadow: 0 8px 24px rgba(102, 16, 242, 0.3);
+}
+
+.skill-category:nth-child(7):hover .skill-icon {
+    box-shadow: 0 12px 32px rgba(102, 16, 242, 0.4);
+}
+
+.skill-category:nth-child(8) .skill-icon {
+    background: linear-gradient(135deg, #e83e8c 0%, #d63384 100%);
+    box-shadow: 0 8px 24px rgba(232, 62, 140, 0.3);
+}
+
+.skill-category:nth-child(8):hover .skill-icon {
+    box-shadow: 0 12px 32px rgba(232, 62, 140, 0.4);
+}
+
+.skill-category:nth-child(9) .skill-icon {
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+    box-shadow: 0 8px 24px rgba(32, 201, 151, 0.3);
+}
+
+.skill-category:nth-child(9):hover .skill-icon {
+    box-shadow: 0 12px 32px rgba(32, 201, 151, 0.4);
+}
+
 .skill-category h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
@@ -807,96 +861,102 @@ body.dark-theme .skill-category h3 {
     margin-top: 1rem;
 }
 
-.skill-tag {
-    position: relative;
-    background: rgba(52, 152, 219, 0.1);
-    border: 2px solid rgba(52, 152, 219, 0.2);
-    color: #2980b9;
-    padding: 0.7rem 1.2rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: default;
-    overflow: hidden;
+/* Simple and Clean Tech Pills */
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    margin: 4px;
+    border-radius: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 60px;
+    
+    /* Simple, clean styling - no colors */
+    background: #f8f9fa;
+    color: #495057;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    
+    /* Smooth interactions */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
 }
 
-.skill-tag::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.6s ease;
+.tech-pill:hover {
+    background: #6c757d;
+    color: white;
+    border-color: #6c757d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.skill-tag:hover::before {
-    left: 100%;
+.tech-pill:active {
+    transform: translateY(-1px) scale(1.02);
+    transition: all 0.1s ease;
 }
 
-.skill-tag:hover {
-    background: #3498db !important;
-    border-color: #3498db !important;
-    color: white !important;
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+/* Dark theme styling - simple and clean */
+body.dark-theme .tech-pill {
+    background: #343a40;
+    color: #f8f9fa;
+    border-color: #495057;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-body.dark-theme .skill-tag {
-    background: rgba(52, 152, 219, 0.15);
-    border-color: rgba(52, 152, 219, 0.3);
-    color: #5dade2;
+body.dark-theme .tech-pill:hover {
+    background: #6c757d;
+    color: white;
+    border-color: #6c757d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-body.dark-theme .skill-tag:hover {
-    background: #3498db !important;
-    color: white !important;
-    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+/* Responsive tech pill behavior */
+@media (max-width: 768px) {
+    .tech-pill {
+        font-size: 12px;
+        padding: 6px 12px;
+        min-width: 50px;
+        margin: 3px;
+    }
 }
 
-/* Programming Languages specific styling */
-.skill-category:nth-child(1) .skill-tag {
-    border-color: rgba(102, 126, 234, 0.3);
-    background: rgba(102, 126, 234, 0.1);
-    color: #667eea;
+@media (max-width: 480px) {
+    .tech-pill {
+        font-size: 11px;
+        padding: 5px 10px;
+        min-width: 45px;
+        margin: 2px;
+    }
 }
 
-.skill-category:nth-child(1) .skill-tag:hover {
-    background: #667eea !important;
-    border-color: #667eea !important;
-    color: white !important;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+/* Simple focus states for accessibility */
+.tech-pill:focus-visible {
+    outline: 2px solid #6c757d;
+    outline-offset: 2px;
 }
 
-/* Tools & Frameworks specific styling */
-.skill-category:nth-child(2) .skill-tag {
-    border-color: rgba(245, 87, 108, 0.3);
-    background: rgba(245, 87, 108, 0.1);
-    color: #f5576c;
+/* Simple container styling for tech pills */
+.skill-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.skill-category:nth-child(2) .skill-tag:hover {
-    background: #f5576c !important;
-    border-color: #f5576c !important;
-    color: white !important;
-    box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
-}
-
-/* Soft Skills specific styling */
-.skill-category:nth-child(3) .skill-tag {
-    border-color: rgba(79, 172, 254, 0.3);
-    background: rgba(79, 172, 254, 0.1);
-    color: #4facfe;
-}
-
-.skill-category:nth-child(3) .skill-tag:hover {
-    background: #4facfe !important;
-    border-color: #4facfe !important;
-    color: white !important;
-    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.3);
+body.dark-theme .skill-technologies {
+    background: #343a40;
+    border-color: #495057;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 /* Projects Section */
@@ -1345,6 +1405,94 @@ body.dark-theme .contact-details h4 {
 
 .download-btn:hover {
     transform: translateY(-2px);
+}
+
+/* Category-specific tech pill hover colors matching skill icons */
+
+/* Frontend Development - Blue Purple Gradient */
+.skill-category:nth-child(1) .tech-pill:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Backend Development - Pink Gradient */
+.skill-category:nth-child(2) .tech-pill:hover {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border-color: #f093fb;
+    box-shadow: 0 4px 12px rgba(240, 147, 251, 0.3);
+}
+
+/* Mobile & Cross-Platform - Blue Cyan Gradient */
+.skill-category:nth-child(3) .tech-pill:hover {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border-color: #4facfe;
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+}
+
+/* DevOps & Cloud - Teal Gradient */
+.skill-category:nth-child(4) .tech-pill:hover {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    color: white;
+    border-color: #17a2b8;
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+/* Security & Authentication - Green Gradient */
+.skill-category:nth-child(5) .tech-pill:hover {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border-color: #28a745;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Development Tools - Orange Gradient */
+.skill-category:nth-child(6) .tech-pill:hover {
+    background: linear-gradient(135deg, #fd7e14 0%, #ff6b35 100%);
+    color: white;
+    border-color: #fd7e14;
+    box-shadow: 0 4px 12px rgba(253, 126, 20, 0.3);
+}
+
+/* Testing & Quality - Purple Gradient */
+.skill-category:nth-child(7) .tech-pill:hover {
+    background: linear-gradient(135deg, #6610f2 0%, #6f42c1 100%);
+    color: white;
+    border-color: #6610f2;
+    box-shadow: 0 4px 12px rgba(102, 16, 242, 0.3);
+}
+
+/* Leadership & Collaboration - Pink Purple Gradient */
+.skill-category:nth-child(8) .tech-pill:hover {
+    background: linear-gradient(135deg, #e83e8c 0%, #d63384 100%);
+    color: white;
+    border-color: #e83e8c;
+    box-shadow: 0 4px 12px rgba(232, 62, 140, 0.3);
+}
+
+/* AI and Self Improvement - Teal Green Gradient */
+.skill-category:nth-child(9) .tech-pill:hover {
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+    color: white;
+    border-color: #20c997;
+    box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
+}
+
+/* Dark theme adjustments for category-specific colors */
+body.dark-theme .skill-category:nth-child(1) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(2) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(3) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(4) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(5) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(6) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(7) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(8) .tech-pill:hover,
+body.dark-theme .skill-category:nth-child(9) .tech-pill:hover {
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
