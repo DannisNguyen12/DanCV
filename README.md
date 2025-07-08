@@ -1,10 +1,11 @@
 # Danny Nguyen - Personal CV Website
 
-A modern, responsive personal portfolio website showcasing my journey as an aspiring software developer.
+A modern, responsive personal portfolio website showcasing my journey as an aspiring software developer, now featuring an integrated testimonial submission and approval system.
 
 ## 🌟 Live Demo
 
 Open `CV.html` in your browser to view the live website.
+For the complete experience with testimonial functionality, run the Node.js server.
 
 ## 📖 About
 
@@ -13,11 +14,19 @@ This website tells the story of my transformation from a student in Vietnam to a
 ## ✨ Features
 
 ### 🎨 Design & User Experience
+- **Apple Store-Inspired Design**: Clean, professional, and creative aesthetic
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **Dark/Light Theme**: Toggle between themes with persistent preference storage
-- **Smooth Animations**: Professional transitions and hover effects
-- **Modern Typography**: Google Fonts (Montserrat & Playfair Display)
-- **Clean Layout**: Intuitive navigation with smooth scrolling
+- **Smooth Animations**: Professional transitions and scroll-triggered effects
+- **Modern Typography**: System fonts for optimal readability
+- **Interactive Elements**: Technology pills with hover effects and animations
+
+### 📝 Testimonial System (NEW!)
+- **Public Submission Form**: Visitors can submit testimonials about working with you
+- **Admin Review Panel**: Review and approve/reject testimonials before they go live
+- **Professional Display**: Approved testimonials are beautifully integrated into your CV
+- **Spam Protection**: Rate limiting and duplicate submission prevention
+- **Real-time Updates**: Admin panel updates automatically with new submissions
 
 ### 📱 Interactive Elements
 - **Navigation**: Active section highlighting with smooth scroll
@@ -142,9 +151,84 @@ A full-stack web application built for students to trade books and gadgets susta
 - Keyboard navigation support
 - Smooth scrolling implementation
 
+## � Getting Started with Testimonial System
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm (comes with Node.js)
+
+### Quick Setup
+
+1. **Run the setup script:**
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
+
+2. **Start the server:**
+   ```bash
+   npm start
+   ```
+
+3. **Access your website:**
+   - Main website: `http://localhost:3000`
+   - Admin panel: `http://localhost:3000/admin`
+
+### Manual Setup (Alternative)
+
+```bash
+# Install dependencies
+npm install
+
+# Create data directories
+mkdir -p data/pending data/approved
+
+# Initialize data files
+echo "[]" > data/pending-testimonials.json
+echo "[]" > data/approved-testimonials.json
+
+# Start the server
+npm start
+```
+
+## 📝 How the Testimonial System Works
+
+### For Visitors (Submitting Testimonials)
+1. Visit your CV website
+2. Scroll to "What Others Say" section
+3. Fill out the submission form
+4. Receive confirmation of submission
+
+### For You (Admin Review)
+1. Visit `/admin` to access the admin panel
+2. Review pending testimonials
+3. Approve or reject each submission
+4. Approved testimonials appear on your CV immediately
+
+## 🔧 API Endpoints
+
+### Public
+- `GET /api/testimonials` - Get approved testimonials
+- `POST /api/testimonials/submit` - Submit new testimonial
+
+### Admin
+- `GET /api/admin/testimonials/pending` - Get pending testimonials  
+- `POST /api/admin/testimonials/:id/approve` - Approve testimonial
+- `POST /api/admin/testimonials/:id/reject` - Reject testimonial
+
+## ⚠️ Security Notes
+
+**Important**: The admin panel is currently unprotected. For production:
+
+1. Add authentication to the admin panel
+2. Use HTTPS for all traffic
+3. Implement proper input validation
+4. Consider using a database instead of JSON files
+5. Set up proper CORS policies
+
 ## 📞 Contact Information
 
-- **Email**: danny.nguyen@example.com
+- **Email**: long.nm187254@gmail.com
 - **LinkedIn**: [linkedin.com/in/dannynguyen](https://linkedin.com/in/dannynguyen)
 - **GitHub**: [github.com/dannynguyen](https://github.com/dannynguyen)
 
@@ -154,16 +238,18 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- **Design Inspiration**: Modern portfolio websites and CV templates
+- **Design Inspiration**: Apple Store design principles
 - **Icons**: Font Awesome icons
-- **Fonts**: Google Fonts (Montserrat, Playfair Display)
-- **Color Palette**: Professional blue and gray tones
+- **Fonts**: System fonts for optimal performance
+- **Color Palette**: Professional gradients and modern tones
 
 ## 📝 Future Enhancements
 
-- [ ] Add more interactive project demonstrations
-- [ ] Implement contact form with backend integration
-- [ ] Add blog section for technical articles
+- [x] ~~Add testimonial submission and approval system~~
+- [ ] Add authentication to admin panel
+- [ ] Implement email notifications for new testimonials
+- [ ] Add testimonial categories/tags
+- [ ] Create database migration from JSON files
 - [ ] Create project detail modals
 - [ ] Add loading animations
 - [ ] Implement PWA features

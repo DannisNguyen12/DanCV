@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials Admin - Danny's CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
+        }
+
+        .admin-header {
+            background: #fff;
+            border-bottom: 1px solid #d2d2d7;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .admin-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-title h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .stats-badge {
+            background: #007aff;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .admin-content {
+            padding: 2rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .refresh-btn {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            background: #0056d6;
+            transform: translateY(-1px);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e5e5e7;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .submitter-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .submitter-details {
+            font-size: 0.9rem;
+            color: #86868b;
+            margin-bottom: 0.5rem;
+        }
+
+        .relationship-badge {
+            background: #f2f2f7;
+            color: #1d1d1f;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .star {
+            color: #ffcc00;
+            font-size: 1rem;
+        }
+
+        .star.empty {
+            color: #d2d2d7;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #007aff;
+        }
+
+        .testimonial-meta {
+            font-size: 0.8rem;
+            color: #86868b;
+            margin-bottom: 1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-approve {
+            background: #34c759;
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background: #28a745;
+            transform: translateY(-1px);
+        }
+
+        .btn-reject {
+            background: #ff3b30;
+            color: white;
+        }
+
+        .btn-reject:hover {
+            background: #dc3545;
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #86868b;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #007aff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #86868b;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .message.show {
+            transform: translateX(0);
+        }
+
+        .message.success {
+            background: #34c759;
+            color: white;
+        }
+
+        .message.error {
+            background: #ff3b30;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 0 1rem;
+            }
+
+            .testimonial-card {
+                padding: 1rem;
+            }
+
+            .testimonial-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .action-buttons {
+                justify-content: stretch;
+            }
+
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-container">
+            <div class="admin-title">
+                <h1><i class="fas fa-shield-alt"></i> Testimonials Admin</h1>
+                <span id="pendingCount" class="stats-badge">0 pending</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-content">
+        <div class="admin-container">
+            <div class="section-header">
+                <h2 class="section-title">Pending Testimonials</h2>
+                <button id="refreshBtn" class="refresh-btn">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+            </div>
+
+            <div id="loadingIndicator" class="loading">
+                <div class="spinner"></div>
+                <p>Loading testimonials...</p>
+            </div>
+
+            <div id="testimonialsContainer" class="testimonials-grid" style="display: none;">
+                <!-- Testimonials will be loaded here -->
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-inbox"></i>
+                <h3>No Pending Testimonials</h3>
+                <p>All caught up! No testimonials waiting for review.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        class TestimonialsAdmin {
+            constructor() {
+                this.loadingIndicator = document.getElementById('loadingIndicator');
+                this.testimonialsContainer = document.getElementById('testimonialsContainer');
+                this.emptyState = document.getElementById('emptyState');
+                this.pendingCount = document.getElementById('pendingCount');
+                this.refreshBtn = document.getElementById('refreshBtn');
+
+                this.refreshBtn.addEventListener('click', () => this.loadTestimonials());
+                this.loadTestimonials();
+
+                // Auto-refresh every 30 seconds
+                setInterval(() => this.loadTestimonials(), 30000);
+            }
+
+            async loadTestimonials() {
+                try {
+                    this.showLoading();
+                    
+                    const response = await fetch('/api/admin/testimonials/pending');
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.renderTestimonials(data.testimonials);
+                        this.updatePendingCount(data.testimonials.length);
+                    } else {
+                        this.showMessage('Error loading testimonials', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error loading testimonials:', error);
+                    this.showMessage('Failed to load testimonials', 'error');
+                } finally {
+                    this.hideLoading();
+                }
+            }
+
+            renderTestimonials(testimonials) {
+                if (testimonials.length === 0) {
+                    this.showEmptyState();
+                    return;
+                }
+
+                this.testimonialsContainer.innerHTML = testimonials.map(testimonial => 
+                    this.createTestimonialCard(testimonial)
+                ).join('');
+
+                this.testimonialsContainer.style.display = 'grid';
+                this.emptyState.style.display = 'none';
+
+                // Add event listeners to action buttons
+                this.attachButtonEventListeners();
+            }
+
+            createTestimonialCard(testimonial) {
+                const submittedDate = new Date(testimonial.submittedAt).toLocaleString();
+                const stars = this.renderStars(testimonial.rating);
+
+                return `
+                    <div class="testimonial-card" data-id="${testimonial.id}">
+                        <div class="testimonial-header">
+                            <div class="submitter-info">
+                                <h3>${this.escapeHtml(testimonial.submitterName)}</h3>
+                                <div class="submitter-details">
+                                    <div>${this.escapeHtml(testimonial.submitterTitle)}</div>
+                                    <div>${this.escapeHtml(testimonial.submitterEmail)}</div>
+                                </div>
+                                <span class="relationship-badge">${this.escapeHtml(testimonial.relationship)}</span>
+                                <div class="rating">${stars}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-text">
+                            "${this.escapeHtml(testimonial.testimonialText)}"
+                        </div>
+                        
+                        <div class="testimonial-meta">
+                            Submitted: ${submittedDate}
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-approve" data-action="approve" data-id="${testimonial.id}">
+                                <i class="fas fa-check"></i>
+                                Approve
+                            </button>
+                            <button class="btn btn-reject" data-action="reject" data-id="${testimonial.id}">
+                                <i class="fas fa-times"></i>
+                                Reject
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderStars(rating) {
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    stars += `<span class="star ${i <= rating ? '' : 'empty'}">★</span>`;
+                }
+                return stars;
+            }
+
+            attachButtonEventListeners() {
+                const buttons = this.testimonialsContainer.querySelectorAll('.btn[data-action]');
+                buttons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const action = e.target.closest('.btn').dataset.action;
+                        const id = e.target.closest('.btn').dataset.id;
+                        this.handleTestimonialAction(action, id);
+                    });
+                });
+            }
+
+            async handleTestimonialAction(action, id) {
+                const button = document.querySelector(`button[data-action="${action}"][data-id="${id}"]`);
+                const card = document.querySelector(`[data-id="${id}"]`);
+                
+                try {
+                    button.disabled = true;
+                    button.innerHTML = `<div class="spinner"></div> ${action === 'approve' ? 'Approving...' : 'Rejecting...'}`;
+
+                    const response = await fetch(`/api/admin/testimonials/${id}/${action}`, {
+                        method: 'POST'
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.showMessage(data.message, 'success');
+                        card.style.transition = 'all 0.3s ease';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateX(20px)';
+                        
+                        setTimeout(() => {
+                            card.remove();
+                            this.updatePendingCount();
+                            
+                            // Check if no more testimonials
+                            if (this.testimonialsContainer.children.length === 0) {
+                                this.showEmptyState();
+                            }
+                        }, 300);
+                    } else {
+                        this.showMessage(data.message || 'Action failed', 'error');
+                        button.disabled = false;
+                        button.innerHTML = `<i class="fas fa-${action === 'approve' ? 'check' : 'times'}"></i> ${action === 'approve' ? 'Approve' : 'Reject'}`;
+                    }
+                } catch (error) {
+                    console.error('Error handling testimonial action:', error);
+                    this.showMessage('Network error', 'error');
+                    button.disabled = false;
+                    button.innerHTML = `<i class="fas fa-${action === 'approve' ? 'check' : 'times'}"></i> ${action === 'approve' ? 'Approve' : 'Reject'}`;
+                }
+            }
+
+            updatePendingCount(count = null) {
+                if (count === null) {
+                    count = this.testimonialsContainer.children.length;
+                }
+                this.pendingCount.textContent = `${count} pending`;
+            }
+
+            showLoading() {
+                this.loadingIndicator.style.display = 'block';
+                this.testimonialsContainer.style.display = 'none';
+                this.emptyState.style.display = 'none';
+            }
+
+            hideLoading() {
+                this.loadingIndicator.style.display = 'none';
+            }
+
+            showEmptyState() {
+                this.testimonialsContainer.style.display = 'none';
+                this.emptyState.style.display = 'block';
+            }
+
+            showMessage(text, type) {
+                // Remove existing messages
+                const existingMessages = document.querySelectorAll('.message');
+                existingMessages.forEach(msg => msg.remove());
+
+                const message = document.createElement('div');
+                message.className = `message ${type}`;
+                message.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${text}`;
+                
+                document.body.appendChild(message);
+                
+                // Show message
+                setTimeout(() => message.classList.add('show'), 100);
+                
+                // Hide message after 4 seconds
+                setTimeout(() => {
+                    message.classList.remove('show');
+                    setTimeout(() => message.remove(), 300);
+                }, 4000);
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
+        // Initialize admin interface
+        document.addEventListener('DOMContentLoaded', () => {
+            new TestimonialsAdmin();
+        });
+    </script>
+</body>
+</html>

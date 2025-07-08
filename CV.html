@@ -80,7 +80,7 @@
                         <span class="tech-pill">React</span>
                         <span class="tech-pill">HTML5</span>
                         <span class="tech-pill">CSS3</span>
-                        <span class="tech-pill">SASS</span>
+                        <span class="tech-pill">Tailwind CSS</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -395,6 +395,70 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Testimonial Submission Form -->
+            <div class="testimonial-submission">
+                <div class="section-subtitle">
+                    <h3>Share Your Experience</h3>
+                    <p>Have you worked with Danny? We'd love to hear about your experience!</p>
+                </div>
+                <form id="testimonialForm" class="testimonial-form">
+                    <div class="form-group">
+                        <label for="submitterName">Your Name</label>
+                        <input type="text" id="submitterName" name="submitterName" required 
+                               placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="submitterTitle">Your Title/Position</label>
+                        <input type="text" id="submitterTitle" name="submitterTitle" required 
+                               placeholder="e.g., Senior Developer, Project Manager">
+                    </div>
+                    <div class="form-group">
+                        <label for="submitterEmail">Your Email</label>
+                        <input type="email" id="submitterEmail" name="submitterEmail" required 
+                               placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="relationship">Your Relationship to Danny</label>
+                        <select id="relationship" name="relationship" required>
+                            <option value="">Select relationship</option>
+                            <option value="colleague">Colleague</option>
+                            <option value="supervisor">Supervisor/Manager</option>
+                            <option value="client">Client</option>
+                            <option value="student">Student (tutored by Danny)</option>
+                            <option value="classmate">Classmate</option>
+                            <option value="professor">Professor/Instructor</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialText">Your Testimonial</label>
+                        <textarea id="testimonialText" name="testimonialText" required 
+                                  placeholder="Share your experience working with Danny. What stood out about his work, skills, or character?" 
+                                  rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Overall Rating</label>
+                        <div class="rating-input">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5" title="Excellent">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="Very Good">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="Good">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="Fair">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="Poor">★</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Testimonial
+                    </button>
+                </form>
+                <div id="submissionMessage" class="submission-message"></div>
             </div>
         </div>
     </section>

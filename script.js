@@ -329,12 +329,114 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Testimonial Form Handling
+    const testimonialForm = document.getElementById('testimonialForm');
+    const submissionMessage = document.getElementById('submissionMessage');
+    
+    if (testimonialForm) {
+        testimonialForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            try {
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                hideMessage();
+                
+                // Collect form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Basic client-side validation
+                if (!validateForm(data)) {
+                    throw new Error('Please fill in all required fields correctly.');
+                }
+                
+                // Submit to server
+                const response = await fetch('/api/testimonials/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    this.reset();
+                    clearRating();
+                } else {
+                    showMessage(result.message || 'Submission failed. Please try again.', 'error');
+                }
+                
+            } catch (error) {
+                console.error('Testimonial submission error:', error);
+                showMessage(error.message || 'Network error. Please check your connection and try again.', 'error');
+            } finally {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+    }
+    
+    function validateForm(data) {
+        // Required fields
+        const required = ['submitterName', 'submitterTitle', 'submitterEmail', 'relationship', 'testimonialText', 'rating'];
+        for (const field of required) {
+            if (!data[field] || data[field].trim() === '') {
+                return false;
+            }
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.submitterEmail)) {
+            return false;
+        }
+        
+        // Rating validation
+        const rating = parseInt(data.rating);
+        if (isNaN(rating) || rating < 1 || rating > 5) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    function showMessage(text, type) {
+        submissionMessage.textContent = text;
+        submissionMessage.className = `submission-message ${type} show`;
+        
+        // Scroll message into view
+        submissionMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Auto-hide success messages after 5 seconds
+        if (type === 'success') {
+            setTimeout(hideMessage, 5000);
+        }
+    }
+    
+    function hideMessage() {
+        submissionMessage.classList.remove('show');
+    }
+    
+    function clearRating() {
+        const ratingInputs = document.querySelectorAll('input[name="rating"]');
+        ratingInputs.forEach(input => input.checked = false);
+    }
 });
 
 // Keyboard navigation for accessibility
 document.addEventListener('keydown', function(e) {
     const lightbox = document.querySelector('.lightbox');
-    if (lightbox.classList.contains('active')) {
+    if (lightbox && lightbox.classList.contains('active')) {
         if (e.key === 'Escape') {
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -342,9 +444,12 @@ document.addEventListener('keydown', function(e) {
     }
     
     // Arrow keys for quote navigation
-    if (e.key === 'ArrowLeft') {
-        document.querySelector('.prev-quote').click();
-    } else if (e.key === 'ArrowRight') {
-        document.querySelector('.next-quote').click();
+    const prevQuote = document.querySelector('.prev-quote');
+    const nextQuote = document.querySelector('.next-quote');
+    
+    if (e.key === 'ArrowLeft' && prevQuote) {
+        prevQuote.click();
+    } else if (e.key === 'ArrowRight' && nextQuote) {
+        nextQuote.click();
     }
 });
